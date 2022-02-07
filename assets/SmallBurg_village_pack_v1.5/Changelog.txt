@@ -1,0 +1,66 @@
+Change log
+========================
+
+V1.6.1 [05-02-2022]
+----------------
+Fixed colours and shadows on the housing tiles
+
+V1.6 [02-02-2022]
+----------------
+Added Kitchen Sink
+Added Kitchen cabinets
+Added Kitchen cuboards
+Added Table cloths
+Added Fridges
+
+V1.5 [26-01-2022]
+----------------
+Added wooden chairs & tables
+Added bookcases and books
+Added Coaches
+Updated wall system
+Added Fireplace (no animation)
+
+V1.4 [19-01-2022]
+----------------
+Added the new housing system
+Added interior walls
+Added new chimneys 
+Added smoke for chimneys
+
+V1.3 [12-01-2022]
+----------------
+Updated the character in 4 directions
+Merged the hands into one unique character layer
+Updates all clothing items to reflect these new directions
+Updates all hairs items to reflect these new directions
+
+V1.2 [07-01-2022]
+----------------
+New Assets:
+* Animated Ground(dirt) shore
+* Middle Trees
+    * Pointy
+    * Cilinder
+    * Round
+* Big Tree (Round)
+* Fountains:
+    * Unstable water movement
+    * Stable water
+
+Format:
+* Updated tiles sheet to be easier to pick tiles
+
+--
+
+V1.1 [04-01-2022]
+-----------------
+* Added sideways for water animation
+* Corrected brown terrain stairs
+* added horizontal and vertical pathways
+
+--
+
+V1.0 [03-01-2022]
+-----------------
+* Released v1.0

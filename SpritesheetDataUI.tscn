@@ -1,0 +1,150 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://SpritesheetDataUI.gd" type="Script" id=2]
+
+[node name="SpritesheetDataUI" type="VBoxContainer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+margin_right = 1024.0
+margin_bottom = 20.0
+
+[node name="Image" type="HBoxContainer" parent="HBoxContainer"]
+margin_right = 106.0
+margin_bottom = 20.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="HBoxContainer/Image"]
+margin_top = 3.0
+margin_right = 40.0
+margin_bottom = 17.0
+text = "Image"
+
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer/Image"]
+margin_left = 44.0
+margin_right = 44.0
+margin_bottom = 20.0
+
+[node name="ChangeImageButton" type="Button" parent="HBoxContainer/Image"]
+margin_left = 48.0
+margin_right = 106.0
+margin_bottom = 20.0
+size_flags_vertical = 4
+text = "Change"
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="."]
+margin_top = 24.0
+margin_right = 1024.0
+margin_bottom = 48.0
+
+[node name="HCells" type="HBoxContainer" parent="HBoxContainer3"]
+margin_right = 178.0
+margin_bottom = 24.0
+
+[node name="Label" type="Label" parent="HBoxContainer3/HCells"]
+margin_top = 5.0
+margin_right = 100.0
+margin_bottom = 19.0
+text = "Horizontal cells"
+
+[node name="SpinBox" type="SpinBox" parent="HBoxContainer3/HCells"]
+margin_left = 104.0
+margin_right = 178.0
+margin_bottom = 24.0
+min_value = 1.0
+value = 1.0
+
+[node name="VCells" type="HBoxContainer" parent="HBoxContainer3"]
+margin_left = 182.0
+margin_right = 342.0
+margin_bottom = 24.0
+
+[node name="Label" type="Label" parent="HBoxContainer3/VCells"]
+margin_top = 5.0
+margin_right = 82.0
+margin_bottom = 19.0
+text = "Vertical cells"
+
+[node name="SpinBox" type="SpinBox" parent="HBoxContainer3/VCells"]
+margin_left = 86.0
+margin_right = 160.0
+margin_bottom = 24.0
+min_value = 1.0
+value = 1.0
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="."]
+margin_top = 52.0
+margin_right = 1024.0
+margin_bottom = 76.0
+
+[node name="IgnoreStart" type="HBoxContainer" parent="HBoxContainer2"]
+margin_right = 152.0
+margin_bottom = 24.0
+
+[node name="Label" type="Label" parent="HBoxContainer2/IgnoreStart"]
+margin_top = 5.0
+margin_right = 74.0
+margin_bottom = 19.0
+text = "Ignore start"
+
+[node name="SpinBox" type="SpinBox" parent="HBoxContainer2/IgnoreStart"]
+margin_left = 78.0
+margin_right = 152.0
+margin_bottom = 24.0
+
+[node name="IgnoreEnd" type="HBoxContainer" parent="HBoxContainer2"]
+margin_left = 156.0
+margin_right = 303.0
+margin_bottom = 24.0
+
+[node name="Label" type="Label" parent="HBoxContainer2/IgnoreEnd"]
+margin_top = 5.0
+margin_right = 69.0
+margin_bottom = 19.0
+text = "Ignore end"
+
+[node name="SpinBox" type="SpinBox" parent="HBoxContainer2/IgnoreEnd"]
+margin_left = 73.0
+margin_right = 147.0
+margin_bottom = 24.0
+
+[node name="AllowEmpty" type="HBoxContainer" parent="."]
+margin_top = 80.0
+margin_right = 1024.0
+margin_bottom = 104.0
+
+[node name="Label" type="Label" parent="AllowEmpty"]
+margin_top = 5.0
+margin_right = 80.0
+margin_bottom = 19.0
+text = "Allow empty"
+
+[node name="CheckBox" type="CheckBox" parent="AllowEmpty"]
+margin_left = 84.0
+margin_right = 108.0
+margin_bottom = 24.0
+
+[node name="FileDialog" type="FileDialog" parent="."]
+margin_top = 124.0
+margin_right = 1024.0
+margin_bottom = 254.0
+window_title = "Open a File"
+mode = 0
+access = 2
+current_dir = "/home/mateus/GameDev/Godot/Random Character Generator"
+current_path = "/home/mateus/GameDev/Godot/Random Character Generator/"
+
+[connection signal="pressed" from="HBoxContainer/Image/ChangeImageButton" to="." method="_on_ChangeImageButton_pressed"]
+[connection signal="value_changed" from="HBoxContainer3/HCells/SpinBox" to="." method="_on_HCells_value_changed"]
+[connection signal="value_changed" from="HBoxContainer3/VCells/SpinBox" to="." method="_on_VCells_value_changed"]
+[connection signal="value_changed" from="HBoxContainer2/IgnoreStart/SpinBox" to="." method="_on_IgnoreStart_value_changed"]
+[connection signal="value_changed" from="HBoxContainer2/IgnoreEnd/SpinBox" to="." method="_on_IgnoreEnd_value_changed"]
+[connection signal="toggled" from="AllowEmpty/CheckBox" to="." method="_on_AllowEmpty_toggled"]
+[connection signal="file_selected" from="FileDialog" to="." method="_on_FileDialog_file_selected"]

@@ -1,0 +1,43 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=4
+
+_global_script_classes=[ {
+"base": "Reference",
+"class": "RandomSpriteGenerator",
+"language": "GDScript",
+"path": "res://addons/random_character_generator/RandomSpriteGenerator.gd"
+}, {
+"base": "Reference",
+"class": "SpritesheetData",
+"language": "GDScript",
+"path": "res://addons/random_character_generator/SpritesheetData.gd"
+} ]
+_global_script_class_icons={
+"RandomSpriteGenerator": "",
+"SpritesheetData": ""
+}
+
+[application]
+
+config/name="Random Character Generator"
+run/main_scene="res://App.tscn"
+config/icon="res://icon.png"
+
+[editor_plugins]
+
+enabled=PoolStringArray( "res://addons/random_character_generator/plugin.cfg" )
+
+[physics]
+
+common/enable_pause_aware_picking=true
+
+[rendering]
+
+environment/default_environment="res://default_env.tres"
