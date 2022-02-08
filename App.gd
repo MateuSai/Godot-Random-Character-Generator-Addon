@@ -25,7 +25,7 @@ func _on_GenerateButton_pressed() -> void:
 
 
 func _on_DownloadButton_pressed() -> void:
-	if not generated_character.texture:
+	if not generated_character.texture or not generated_character.texture.get_data():
 		message_label.show_message("No image generated yet")
 		return
 

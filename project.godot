@@ -30,6 +30,13 @@ config/name="Random Character Generator"
 run/main_scene="res://App.tscn"
 config/icon="res://icon.png"
 
+[display]
+
+window/size/width=1500
+window/size/height=800
+window/stretch/mode="viewport"
+window/stretch/aspect="expand"
+
 [editor_plugins]
 
 enabled=PoolStringArray( "res://addons/random_character_generator/plugin.cfg" )
