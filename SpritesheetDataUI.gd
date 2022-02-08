@@ -2,6 +2,8 @@ extends VBoxContainer
 
 var spritesheet_data: SpritesheetData = SpritesheetData.new()
 
+onready var app: Control = get_tree().root.get_node("App")
+
 onready var texture_rect: TextureRect = get_node("HBoxContainer/Image/TextureRect")
 onready var file_dialog: FileDialog = get_node("FileDialog")
 
@@ -13,6 +15,7 @@ func _on_ChangeImageButton_pressed() -> void:
 func _on_FileDialog_file_selected(path: String) -> void:
 	var texture = load(path)
 	if not texture is Texture:
+		app.message_label.show_message("This file is not an image")
 		return
 	
 	texture_rect.texture = texture
@@ -37,3 +40,7 @@ func _on_IgnoreEnd_value_changed(value: int) -> void:
 
 func _on_AllowEmpty_toggled(pressed: bool) -> void:
 	spritesheet_data.allow_empty = pressed
+
+
+func _on_RemoveButton_pressed() -> void:
+	queue_free()

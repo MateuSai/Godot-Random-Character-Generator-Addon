@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://SpritesheetDataUI.tscn" type="PackedScene" id=1]
 [ext_resource path="res://App.gd" type="Script" id=2]
+[ext_resource path="res://MessagesLabel.gd" type="Script" id=3]
 
 [node name="App" type="Control"]
 anchor_right = 1.0
@@ -12,8 +13,8 @@ __meta__ = {
 }
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
-anchor_right = 1.0
 anchor_bottom = 1.0
+margin_right = 360.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -31,18 +32,16 @@ scroll_horizontal_enabled = false
 
 [node name="SpritesheetsContainer" type="VBoxContainer" parent="HBoxContainer/PanelContainer/ScrollContainer"]
 margin_right = 342.0
-margin_bottom = 172.0
+margin_bottom = 152.0
 
 [node name="SpritesheetDataUI" parent="HBoxContainer/PanelContainer/ScrollContainer/SpritesheetsContainer" instance=ExtResource( 1 )]
-anchor_right = 0.0
-anchor_bottom = 0.0
 margin_right = 342.0
-margin_bottom = 148.0
+margin_bottom = 128.0
 
 [node name="AddNewImageButton" type="Button" parent="HBoxContainer/PanelContainer/ScrollContainer/SpritesheetsContainer"]
-margin_top = 152.0
+margin_top = 132.0
 margin_right = 342.0
-margin_bottom = 172.0
+margin_bottom = 152.0
 text = "Add new"
 
 [node name="GeneratedCharacter" type="TextureRect" parent="HBoxContainer"]
@@ -51,14 +50,55 @@ margin_right = 360.0
 margin_bottom = 600.0
 stretch_mode = 6
 
-[node name="GenerateButton" type="Button" parent="."]
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
 anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = -71.0
-margin_top = -20.0
+margin_left = -75.0
+margin_top = -44.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="GenerateButton" type="Button" parent="VBoxContainer"]
+margin_right = 75.0
+margin_bottom = 20.0
 text = "Generate"
 
+[node name="DownloadButton" type="Button" parent="VBoxContainer"]
+margin_top = 24.0
+margin_right = 75.0
+margin_bottom = 44.0
+text = "Download"
+
+[node name="MessagesLabel" type="Label" parent="."]
+modulate = Color( 1, 0.027451, 0.027451, 1 )
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -40.0
+margin_bottom = 14.0
+grow_horizontal = 0
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Timer" type="Timer" parent="MessagesLabel"]
+wait_time = 3.0
+one_shot = true
+
+[node name="SelectPathFileDialog" type="FileDialog" parent="."]
+margin_right = 315.0
+margin_bottom = 130.0
+window_title = "Open a Directory"
+mode = 2
+access = 2
+current_dir = "/home/mateus/GameDev/Godot/Godot Random Character Generator Addon"
+current_path = "/home/mateus/GameDev/Godot/Godot Random Character Generator Addon/"
+
 [connection signal="pressed" from="HBoxContainer/PanelContainer/ScrollContainer/SpritesheetsContainer/AddNewImageButton" to="." method="_on_AddNewImageButton_pressed"]
-[connection signal="pressed" from="GenerateButton" to="." method="_on_GenerateButton_pressed"]
+[connection signal="pressed" from="VBoxContainer/GenerateButton" to="." method="_on_GenerateButton_pressed"]
+[connection signal="pressed" from="VBoxContainer/DownloadButton" to="." method="_on_DownloadButton_pressed"]
+[connection signal="timeout" from="MessagesLabel/Timer" to="MessagesLabel" method="_on_Timer_timeout"]
+[connection signal="dir_selected" from="SelectPathFileDialog" to="." method="_on_SelectPathFileDialog_dir_selected"]
