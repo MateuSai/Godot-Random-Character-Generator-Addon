@@ -5,7 +5,23 @@ var spritesheet_data: SpritesheetData = SpritesheetData.new()
 onready var app: Control = get_tree().root.get_node("App")
 
 onready var texture_rect: TextureRect = get_node("VBoxContainer/HBoxContainer/Image/TextureRect")
+onready var h_cells_spin_box: SpinBox = get_node("VBoxContainer/GridContainer/HCells/SpinBox")
+onready var v_cells_spin_box: SpinBox = get_node("VBoxContainer/GridContainer/VCells/SpinBox")
+onready var ignore_start_spin_box: SpinBox = get_node("VBoxContainer/GridContainer/IgnoreStart/SpinBox")
+onready var ignore_end_spin_box: SpinBox = get_node("VBoxContainer/GridContainer/IgnoreEnd/SpinBox")
+onready var allow_empty_check_box: CheckBox = get_node("VBoxContainer/AllowEmpty/CheckBox")
 onready var file_dialog: FileDialog = get_node("FileDialog")
+
+
+func initialize(data: SpritesheetData) -> void:
+	self.spritesheet_data = data
+	
+	_add_texture(data.texture)
+	h_cells_spin_box.value = data.h_cells
+	v_cells_spin_box.value = data.v_cells
+	ignore_start_spin_box.value = data.ignore_start
+	ignore_end_spin_box.value = data.ignore_end
+	allow_empty_check_box.pressed = data.allow_empty
 
 
 func _on_ChangeImageButton_pressed() -> void:
@@ -18,6 +34,10 @@ func _on_FileDialog_file_selected(path: String) -> void:
 		app.message_label.show_message("This file is not an image")
 		return
 	
+	_add_texture(texture)
+	
+	
+func _add_texture(texture: Texture) -> void:
 	texture_rect.texture = texture
 	var texture_aspect_ratio: float = float(texture.get_width()) / texture.get_height()
 	texture_rect.rect_min_size.y = texture_rect.rect_size.x / texture_aspect_ratio
