@@ -125,18 +125,18 @@ scroll_horizontal_enabled = false
 
 [node name="SpritesheetsContainer" type="VBoxContainer" parent="HBoxContainer/PanelContainer/ScrollContainer"]
 margin_right = 501.0
-margin_bottom = 264.0
+margin_bottom = 258.0
 
 [node name="SpritesheetDataUI" parent="HBoxContainer/PanelContainer/ScrollContainer/SpritesheetsContainer" instance=ExtResource( 1 )]
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_right = 501.0
-margin_bottom = 217.0
+margin_bottom = 211.0
 
 [node name="AddNewImageButton" type="Button" parent="HBoxContainer/PanelContainer/ScrollContainer/SpritesheetsContainer"]
-margin_top = 221.0
+margin_top = 215.0
 margin_right = 501.0
-margin_bottom = 264.0
+margin_bottom = 258.0
 text = "Add new"
 
 [node name="GeneratedCharacter" type="TextureRect" parent="HBoxContainer"]

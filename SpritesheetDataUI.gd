@@ -46,3 +46,17 @@ func _on_AllowEmpty_toggled(pressed: bool) -> void:
 
 func _on_RemoveButton_pressed() -> void:
 	queue_free()
+
+
+func _on_MoveUpButton_pressed() -> void:
+	var current_index: int = get_index()
+	if current_index == 0:
+		return
+	get_parent().move_child(self, current_index - 1)
+
+
+func _on_MoveDownButton_pressed() -> void:
+	var current_index: int = get_index()
+	if current_index == get_parent().get_child_count() - 2:
+		return
+	get_parent().move_child(self, current_index + 1)

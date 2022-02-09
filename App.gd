@@ -24,8 +24,10 @@ func _on_GenerateButton_pressed() -> void:
 		if child is PanelContainer:
 			character_data.append(child.spritesheet_data)
 	
-	if character_data.size() > 0:
+	if character_data.size() > 0 and character_data[0].texture:
 		generated_character.texture = RandomSpriteGenerator.create(character_data)
+	else:
+		message_label.show_message("Add one image at least")
 
 
 func _on_DownloadButton_pressed() -> void:
