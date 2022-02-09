@@ -1,168 +1,225 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://SpritesheetDataUI.gd" type="Script" id=2]
 
-[node name="SpritesheetDataUI" type="VBoxContainer"]
-margin_right = 1024.0
-margin_bottom = 600.0
+[sub_resource type="StyleBoxFlat" id=1]
+content_margin_left = 6.0
+content_margin_right = 6.0
+content_margin_top = 6.0
+content_margin_bottom = 6.0
+bg_color = Color( 0.662745, 0.627451, 0.627451, 1 )
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color( 0, 0, 0, 1 )
+border_blend = true
+
+[sub_resource type="StyleBoxFlat" id=3]
+content_margin_left = 4.0
+content_margin_right = 4.0
+content_margin_top = 2.0
+content_margin_bottom = 2.0
+bg_color = Color( 0.827451, 0.301961, 0.301961, 1 )
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id=4]
+content_margin_left = 4.0
+content_margin_right = 4.0
+content_margin_top = 2.0
+content_margin_bottom = 2.0
+bg_color = Color( 0.784314, 0.0784314, 0.0784314, 1 )
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id=2]
+content_margin_left = 4.0
+content_margin_right = 4.0
+content_margin_top = 2.0
+content_margin_bottom = 2.0
+bg_color = Color( 0.913725, 0.172549, 0.172549, 1 )
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[node name="SpritesheetDataUI" type="PanelContainer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_styles/panel = SubResource( 1 )
 script = ExtResource( 2 )
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+margin_left = 6.0
+margin_top = 6.0
+margin_right = 1494.0
+margin_bottom = 794.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="RemoveButton" type="Button" parent="."]
-margin_left = 1004.0
-margin_right = 1024.0
-margin_bottom = 20.0
+[node name="RemoveButton" type="Button" parent="VBoxContainer"]
+margin_left = 1472.0
+margin_right = 1488.0
+margin_bottom = 18.0
 size_flags_horizontal = 8
+custom_styles/hover = SubResource( 3 )
+custom_styles/pressed = SubResource( 4 )
+custom_styles/normal = SubResource( 2 )
 text = "X"
-flat = true
 
-[node name="HBoxContainer" type="HBoxContainer" parent="."]
-margin_top = 24.0
-margin_right = 1024.0
-margin_bottom = 44.0
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+margin_top = 22.0
+margin_right = 1488.0
+margin_bottom = 42.0
 
-[node name="Image" type="HBoxContainer" parent="HBoxContainer"]
-margin_right = 1024.0
+[node name="Image" type="HBoxContainer" parent="VBoxContainer/HBoxContainer"]
+margin_right = 1488.0
 margin_bottom = 20.0
 size_flags_horizontal = 3
+size_flags_vertical = 3
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Label" type="Label" parent="HBoxContainer/Image"]
+[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer/Image"]
 margin_top = 3.0
 margin_right = 40.0
 margin_bottom = 17.0
 text = "Image"
 
-[node name="TextureRect" type="TextureRect" parent="HBoxContainer/Image"]
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/HBoxContainer/Image"]
 margin_left = 44.0
-margin_right = 532.0
+margin_right = 1426.0
 margin_bottom = 20.0
-size_flags_horizontal = 3
-size_flags_vertical = 3
+size_flags_horizontal = 7
+size_flags_stretch_ratio = 50.0
 expand = true
 stretch_mode = 6
 
-[node name="ChangeImageButton" type="Button" parent="HBoxContainer/Image"]
-margin_left = 966.0
-margin_right = 1024.0
+[node name="ChangeImageButton" type="Button" parent="VBoxContainer/HBoxContainer/Image"]
+margin_left = 1430.0
+margin_right = 1488.0
 margin_bottom = 20.0
 size_flags_horizontal = 10
 size_flags_vertical = 4
 text = "Change"
 
-[node name="GridContainer" type="GridContainer" parent="."]
-margin_top = 48.0
-margin_right = 1024.0
-margin_bottom = 100.0
+[node name="GridContainer" type="GridContainer" parent="VBoxContainer"]
+margin_top = 46.0
+margin_right = 1488.0
+margin_bottom = 98.0
 columns = 2
 
-[node name="HCells" type="HBoxContainer" parent="GridContainer"]
+[node name="HCells" type="HBoxContainer" parent="VBoxContainer/GridContainer"]
 margin_right = 178.0
 margin_bottom = 24.0
 
-[node name="Label" type="Label" parent="GridContainer/HCells"]
+[node name="Label" type="Label" parent="VBoxContainer/GridContainer/HCells"]
 margin_top = 5.0
 margin_right = 100.0
 margin_bottom = 19.0
 text = "Horizontal cells"
 
-[node name="SpinBox" type="SpinBox" parent="GridContainer/HCells"]
+[node name="SpinBox" type="SpinBox" parent="VBoxContainer/GridContainer/HCells"]
 margin_left = 104.0
 margin_right = 178.0
 margin_bottom = 24.0
 min_value = 1.0
 value = 1.0
 
-[node name="VCells" type="HBoxContainer" parent="GridContainer"]
+[node name="VCells" type="HBoxContainer" parent="VBoxContainer/GridContainer"]
 margin_left = 182.0
 margin_right = 342.0
 margin_bottom = 24.0
 
-[node name="Label" type="Label" parent="GridContainer/VCells"]
+[node name="Label" type="Label" parent="VBoxContainer/GridContainer/VCells"]
 margin_top = 5.0
 margin_right = 82.0
 margin_bottom = 19.0
 text = "Vertical cells"
 
-[node name="SpinBox" type="SpinBox" parent="GridContainer/VCells"]
+[node name="SpinBox" type="SpinBox" parent="VBoxContainer/GridContainer/VCells"]
 margin_left = 86.0
 margin_right = 160.0
 margin_bottom = 24.0
 min_value = 1.0
 value = 1.0
 
-[node name="IgnoreStart" type="HBoxContainer" parent="GridContainer"]
+[node name="IgnoreStart" type="HBoxContainer" parent="VBoxContainer/GridContainer"]
 margin_top = 28.0
 margin_right = 178.0
 margin_bottom = 52.0
 alignment = 2
 
-[node name="Label" type="Label" parent="GridContainer/IgnoreStart"]
+[node name="Label" type="Label" parent="VBoxContainer/GridContainer/IgnoreStart"]
 margin_left = 26.0
 margin_top = 5.0
 margin_right = 100.0
 margin_bottom = 19.0
 text = "Ignore start"
 
-[node name="SpinBox" type="SpinBox" parent="GridContainer/IgnoreStart"]
+[node name="SpinBox" type="SpinBox" parent="VBoxContainer/GridContainer/IgnoreStart"]
 margin_left = 104.0
 margin_right = 178.0
 margin_bottom = 24.0
 
-[node name="IgnoreEnd" type="HBoxContainer" parent="GridContainer"]
+[node name="IgnoreEnd" type="HBoxContainer" parent="VBoxContainer/GridContainer"]
 margin_left = 182.0
 margin_top = 28.0
 margin_right = 342.0
 margin_bottom = 52.0
 alignment = 2
 
-[node name="Label" type="Label" parent="GridContainer/IgnoreEnd"]
+[node name="Label" type="Label" parent="VBoxContainer/GridContainer/IgnoreEnd"]
 margin_left = 13.0
 margin_top = 5.0
 margin_right = 82.0
 margin_bottom = 19.0
 text = "Ignore end"
 
-[node name="SpinBox" type="SpinBox" parent="GridContainer/IgnoreEnd"]
+[node name="SpinBox" type="SpinBox" parent="VBoxContainer/GridContainer/IgnoreEnd"]
 margin_left = 86.0
 margin_right = 160.0
 margin_bottom = 24.0
 
-[node name="AllowEmpty" type="HBoxContainer" parent="."]
-margin_top = 104.0
-margin_right = 1024.0
-margin_bottom = 128.0
+[node name="AllowEmpty" type="HBoxContainer" parent="VBoxContainer"]
+margin_top = 102.0
+margin_right = 1488.0
+margin_bottom = 126.0
 
-[node name="Label" type="Label" parent="AllowEmpty"]
+[node name="Label" type="Label" parent="VBoxContainer/AllowEmpty"]
 margin_top = 5.0
 margin_right = 80.0
 margin_bottom = 19.0
 text = "Allow empty"
 
-[node name="CheckBox" type="CheckBox" parent="AllowEmpty"]
+[node name="CheckBox" type="CheckBox" parent="VBoxContainer/AllowEmpty"]
 margin_left = 84.0
 margin_right = 108.0
 margin_bottom = 24.0
 
 [node name="FileDialog" type="FileDialog" parent="."]
-margin_top = 124.0
-margin_right = 1024.0
-margin_bottom = 254.0
+margin_left = 607.0
+margin_top = 335.0
+margin_right = 892.0
+margin_bottom = 465.0
 window_title = "Open a File"
 mode = 0
 access = 2
 current_dir = "/home/mateus/GameDev/Godot/Godot Random Character Generator Addon"
 current_path = "/home/mateus/GameDev/Godot/Godot Random Character Generator Addon/"
 
-[connection signal="pressed" from="RemoveButton" to="." method="_on_RemoveButton_pressed"]
-[connection signal="pressed" from="HBoxContainer/Image/ChangeImageButton" to="." method="_on_ChangeImageButton_pressed"]
-[connection signal="value_changed" from="GridContainer/HCells/SpinBox" to="." method="_on_HCells_value_changed"]
-[connection signal="value_changed" from="GridContainer/VCells/SpinBox" to="." method="_on_VCells_value_changed"]
-[connection signal="value_changed" from="GridContainer/IgnoreStart/SpinBox" to="." method="_on_IgnoreStart_value_changed"]
-[connection signal="value_changed" from="GridContainer/IgnoreEnd/SpinBox" to="." method="_on_IgnoreEnd_value_changed"]
-[connection signal="toggled" from="AllowEmpty/CheckBox" to="." method="_on_AllowEmpty_toggled"]
+[connection signal="pressed" from="VBoxContainer/RemoveButton" to="." method="_on_RemoveButton_pressed"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/Image/ChangeImageButton" to="." method="_on_ChangeImageButton_pressed"]
+[connection signal="value_changed" from="VBoxContainer/GridContainer/HCells/SpinBox" to="." method="_on_HCells_value_changed"]
+[connection signal="value_changed" from="VBoxContainer/GridContainer/VCells/SpinBox" to="." method="_on_VCells_value_changed"]
+[connection signal="value_changed" from="VBoxContainer/GridContainer/IgnoreStart/SpinBox" to="." method="_on_IgnoreStart_value_changed"]
+[connection signal="value_changed" from="VBoxContainer/GridContainer/IgnoreEnd/SpinBox" to="." method="_on_IgnoreEnd_value_changed"]
+[connection signal="toggled" from="VBoxContainer/AllowEmpty/CheckBox" to="." method="_on_AllowEmpty_toggled"]
 [connection signal="file_selected" from="FileDialog" to="." method="_on_FileDialog_file_selected"]

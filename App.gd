@@ -8,8 +8,12 @@ onready var message_label: Label = get_node("MessagesLabel")
 onready var select_path_file_dialog: FileDialog = get_node("SelectPathFileDialog")
 
 
+func _init() -> void:
+	randomize()
+
+
 func _on_AddNewImageButton_pressed() -> void:
-	var new_spritesheet_data_ui: VBoxContainer = SPRITESHEET_DATA_UI_SCENE.instance()
+	var new_spritesheet_data_ui: PanelContainer = SPRITESHEET_DATA_UI_SCENE.instance()
 	spritesheets_container.add_child(new_spritesheet_data_ui)
 	spritesheets_container.move_child(new_spritesheet_data_ui, new_spritesheet_data_ui.get_index() - 1)
 
@@ -17,7 +21,7 @@ func _on_AddNewImageButton_pressed() -> void:
 func _on_GenerateButton_pressed() -> void:
 	var character_data: Array = []
 	for child in spritesheets_container.get_children():
-		if child is VBoxContainer:
+		if child is PanelContainer:
 			character_data.append(child.spritesheet_data)
 	
 	if character_data.size() > 0:

@@ -1,10 +1,10 @@
-extends VBoxContainer
+extends Container
 
 var spritesheet_data: SpritesheetData = SpritesheetData.new()
 
 onready var app: Control = get_tree().root.get_node("App")
 
-onready var texture_rect: TextureRect = get_node("HBoxContainer/Image/TextureRect")
+onready var texture_rect: TextureRect = get_node("VBoxContainer/HBoxContainer/Image/TextureRect")
 onready var file_dialog: FileDialog = get_node("FileDialog")
 
 
@@ -19,6 +19,8 @@ func _on_FileDialog_file_selected(path: String) -> void:
 		return
 	
 	texture_rect.texture = texture
+	var texture_aspect_ratio: float = float(texture.get_width()) / texture.get_height()
+	texture_rect.rect_min_size.y = texture_rect.rect_size.x / texture_aspect_ratio
 	spritesheet_data.texture = texture
 
 
