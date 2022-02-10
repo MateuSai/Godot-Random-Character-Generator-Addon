@@ -25,7 +25,17 @@ func initialize(data: SpritesheetData) -> void:
 
 
 func _on_ChangeImageButton_pressed() -> void:
-	file_dialog.popup_centered_ratio()
+	if OS.get_name() == "HTML5":
+		var image: Image = Image.new()
+		yield(HTML5File.load_image(image), "completed")
+		if not image:
+			app.message_label.show_message("Error while loading the image")
+			return
+		var image_texture: ImageTexture = ImageTexture.new()
+		image_texture.create_from_image(image, 0)
+		_add_texture(image_texture)
+	else:
+		file_dialog.popup_centered_ratio()
 	
 	
 func _on_FileDialog_file_selected(path: String) -> void:

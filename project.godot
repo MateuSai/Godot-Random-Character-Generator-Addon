@@ -30,6 +30,10 @@ config/name="Random Character Generator"
 run/main_scene="res://App.tscn"
 config/icon="res://icon.png"
 
+[autoload]
+
+HTML5File="*res://addons/HTML5FileExchange/HTML5FileExchange.gd"
+
 [display]
 
 window/size/width=1500
@@ -39,7 +43,7 @@ window/stretch/aspect="expand"
 
 [editor_plugins]
 
-enabled=PoolStringArray( "res://addons/random_character_generator/plugin.cfg" )
+enabled=PoolStringArray( "res://addons/HTML5FileExchange/plugin.cfg", "res://addons/random_character_generator/plugin.cfg" )
 
 [physics]
 

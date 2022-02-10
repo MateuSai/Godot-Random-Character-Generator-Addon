@@ -45,8 +45,11 @@ func _on_DownloadButton_pressed() -> void:
 	if not generated_character.texture or not generated_character.texture.get_data():
 		message_label.show_message("No image generated yet")
 		return
-
-	select_path_file_dialog.popup_centered_ratio()
+	
+	if OS.get_name() == "HTML5":
+		HTML5File.save_image(generated_character.texture.get_data(), "character")
+	else:
+		select_path_file_dialog.popup_centered_ratio()
 	
 
 func _on_SelectPathFileDialog_dir_selected(dir: String) -> void:
