@@ -34,6 +34,10 @@ config/icon="res://icon.png"
 
 HTML5File="*res://addons/HTML5FileExchange/HTML5FileExchange.gd"
 
+[debug]
+
+settings/fps/force_fps=15
+
 [display]
 
 window/size/width=1500
