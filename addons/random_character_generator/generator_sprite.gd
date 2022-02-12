@@ -24,16 +24,16 @@ func _set(property, value):
 		if property == "Image " + str(i) + "/Texture":
 			character_data[i].texture = value
 			return true
-		elif property == "Image " + str(i) + "/Horizontal cells" and value:
+		elif property == "Image " + str(i) + "/Horizontal cells":
 			character_data[i].h_cells = value
 			return true
-		elif property == "Image " + str(i) + "/Vertical cells" and value:
+		elif property == "Image " + str(i) + "/Vertical cells":
 			character_data[i].v_cells = value
 			return true
-		elif property == "Image " + str(i) + "/Ignore start" and value:
+		elif property == "Image " + str(i) + "/Ignore start":
 			character_data[i].ignore_start = value
 			return true
-		elif property == "Image " + str(i) + "/Ignore end" and value:
+		elif property == "Image " + str(i) + "/Ignore end":
 			character_data[i].ignore_end = value
 			return true
 		elif property == "Image " + str(i) + "/Allow empty":
